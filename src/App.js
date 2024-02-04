@@ -77,16 +77,38 @@ function App() {
   };
 
   return (
-    <div>
-      <h1>CRUD Application</h1>
-      <CreateForm CreateHolder={CreateHolder} updateHolder={updateHolder} initial={{ id: '', name: '', username:'',email:'',address:{street:'',suite:'',city:'',zipcode:'',geo:{lat:'',lng:''}},phone:'',website:'',company: {name:'',catchPhrase:'',bs:''}}} />
-      <HolderList holders={holders} viewHolder={setSelectedHolder} updateHolder={setSelectedHolder} deleteHolder={deleteHolder} />
+    <div className='app'>
+    
+      <h1>CRUD Application</h1> 
+      <div className='main'>
+<div className='left'>
+<CreateForm createHolder={CreateHolder} initial={{ id: '', name: '', username:'',email:'',address:{street:'',suite:'',city:'',zipcode:'',geo:{lat:'',lng:''}},phone:'',website:'',company: {Name:'',catchPhrase:'',bs:''}}} />
+</div>
+  
+  <div className='center'>
+  <HolderList holders={holders} viewHolder={setSelectedHolder} updateHolder={setSelectedHolder} deleteHolder={deleteHolder} />
+  </div>
+  <div className='right'>
+  {selectedHolder ? (
+        <div >
+          <HolderDetail holder={selectedHolder} />
+          </div>
+          ) : null}
+</div>
+<div className='right'>
       {selectedHolder ? (
         <div>
-          <HolderDetail holder={selectedHolder} />
-          <HolderUpdate holder={selectedHolder} updateHolder={updateHolder} />
-        </div>
-      ) : null}
+            <HolderUpdate holder={selectedHolder} updateHolder={updateHolder} />
+          </div>
+          ) : null}    
+        
+        
+      
+
+  </div>
+      
+      
+  </div>
     </div>
   );
 }

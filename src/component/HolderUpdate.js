@@ -1,11 +1,11 @@
 import React from 'react';
-import CreateForm from './CreateForm';
+import UpdateForm from './UpdateFrom';
 
 const HolderUpdate = ({ holder, updateHolder }) => {
   return (
     <div>
-      <h2>Edit User</h2>
-      <CreateForm initial={holder} updateHolder={updateHolder} />
+      <h2>Update User</h2>
+      <UpdateForm  holder={holder} updateHolder={updateHolder} />
     </div>
   );
 };

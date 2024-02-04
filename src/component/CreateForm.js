@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
-const CreateForm = ({ createHolder, updateHolder, initial }) => {
+const CreateForm = ({ createHolder,initial }) => {
   const [formData, setFormData] = useState(initial);
 
-  const handleInputChange = (event) => {
-    const { name, value } = event.target;
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
     setFormData((prevData) => ({
       ...prevData,
       [name]: value,
@@ -14,16 +14,16 @@ const CreateForm = ({ createHolder, updateHolder, initial }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     if (formData.id) {
-      updateHolder(formData);
-    } else {
       createHolder(formData);
     }
-    setFormData({ id: '', name: '', username:'',email:'',address:{street:'',suite:'',city:'',zipcode:'',geo:{lat:'',lng:''}},phone:'',website:'',company: {name:'',catchPhrase:'',bs:''}});
-  };
+    setFormData({ id: '', name: '', username:'',email:'', address: { street:'', suite:'', city:'', zipcode:'', geo:{lat:'', lng:''}}, phone:'', website:'', company: { name:'', catchPhrase:'', bs:''}});
+ 
+}
 
   return (
-    <form onSubmit={handleSubmit} className='CreateFrom'>
-      
+  
+    <form onSubmit={handleSubmit}  className='CreateFrom'>
+      <h2>Create Form</h2>
       <label>Name:
         <input type="text" name="name" value={formData.name} onChange={handleInputChange} />
       </label>
@@ -37,29 +37,29 @@ const CreateForm = ({ createHolder, updateHolder, initial }) => {
       </label>
       <label>Address:</label>
       <label>
-        Street
-        <input type="text" name="street" value={formData.address.street} onChange={handleInputChange} />
+        Street:
+        <input type="text" name="address.street" value={formData.address.street} onChange={handleInputChange} />
       </label>
       <label>
-        Suite
-        <input type="text" name="suite" value={formData.address.suite} onChange={handleInputChange} />
+        Suite:
+        <input type="text" name="address.suite" value={formData.address.suite} onChange={handleInputChange} />
       </label>
       <label>
-        City
-        <input type="text" name="city" value={formData.address.city} onChange={handleInputChange} />
+        City:
+        <input type="text" name="address.city" value={formData.address.city} onChange={handleInputChange} />
       </label>
       <label>
-        ZipCode
-        <input type="text" name="zipcode" value={formData.address.zipcode} onChange={handleInputChange} />
+        ZipCode:
+        <input type="text" name="address.zipcode" value={formData.address.zipcode} onChange={handleInputChange} />
       </label>
       <label>Geo</label>
       <label>
-        lat
-        <input type="number" name="lat" value={formData.address.geo.lat} onChange={handleInputChange} />
+        lat:
+        <input type="number" name="address.geo.lat" value={formData.address.geo.lat} onChange={handleInputChange} />
       </label>
       <label>
-        lng
-        <input type="number" name="lng" value={formData.address.geo.lng} onChange={handleInputChange} />
+        lng:
+        <input type="number" name="address.geo.lng" value={formData.address.geo.lng} onChange={handleInputChange} />
       </label>
       <label>
         Phone:
@@ -71,19 +71,20 @@ const CreateForm = ({ createHolder, updateHolder, initial }) => {
       </label>
       <label>Company:</label>
       <label>
-        Company Name
-        <input type="text" name="name" value={formData.company.name} onChange={handleInputChange} />
+        Company Name:
+        <input type="text" name="company.name" value={formData.company.name} onChange={handleInputChange} />
       </label>
       <label>
-      CatchPhrase
-        <input type="text" name="catchPhrase" value={formData.company.catchPhrase} onChange={handleInputChange} />
+      CatchPhrase:
+        <input type="text" name="company.catchPhrase" value={formData.company.catchPhrase} onChange={handleInputChange} />
       </label>
       <label>
-      Bs
-        <input type="text" name="bs" value={formData.company.bs} onChange={handleInputChange} />
+      Bs:
+        <input type="text" name="company.bs" value={formData.company.bs} onChange={handleInputChange} />
       </label>
       <button type="submit">Create</button>
     </form>
+    
   );
 };
 

@@ -2,7 +2,7 @@ import React from 'react';
 
 const HolderDetail = ({ holder }) => {
   return (
-    <div>
+    <div className='detail'>
       <h2>Place Holder Details</h2>
       <p>Name: {holder.name}</p>
       <p>UserName:{holder.username}</p>
