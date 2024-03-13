@@ -3,14 +3,19 @@ import React, { useState } from 'react';
 const UpdateForm = ({ holder,updateHolder }) => {
   const [formData1, setFormData1] = useState(holder);
 
+  // const handleInputChange = (event) => {
+  //   const { name, value } = event.target;
+  //   setFormData1((prevData) => ({
+  //     ...prevData,
+  //     [name]: value,
+  //   }));
+  // };
   const handleInputChange = (event) => {
+    event.preventDefault();
     const { name, value } = event.target;
-    setFormData1((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
-  };
-
+    console.log(name, value)
+    setFormData1({ ...formData1, [name]: value });
+}
   const handleSubmit = (event) => {
     event.preventDefault();
     if (formData1.id) {
@@ -21,7 +26,7 @@ const UpdateForm = ({ holder,updateHolder }) => {
 
   return (
   
-    <form onSubmit={handleSubmit}  className='CreateFrom'>
+    <form className='CreateFrom'>
       <label>Name:
         <input type="text" name="name" value={formData1.name} onChange={handleInputChange} />
       </label>
@@ -33,7 +38,7 @@ const UpdateForm = ({ holder,updateHolder }) => {
         Email:
         <input type="email" name="email" value={formData1.email} onChange={handleInputChange} />
       </label>
-      <label>Address:</label>
+      <label>Address</label>
       <label>
         Street:
         <input type="text" name="street" value={formData1.address.street} onChange={handleInputChange} />
@@ -67,7 +72,7 @@ const UpdateForm = ({ holder,updateHolder }) => {
         WebSite:
         <input type="text" name="website" value={formData1.website} onChange={handleInputChange} />
       </label>
-      <label>Company:</label>
+      <label>Company</label>
       <label>
         Company Name:
         <input type="text" name="name" value={formData1.company.name} onChange={handleInputChange} />
@@ -80,7 +85,7 @@ const UpdateForm = ({ holder,updateHolder }) => {
       Bs:
         <input type="text" name="bs" value={formData1.company.bs} onChange={handleInputChange} />
       </label>
-      <button type="submit">Update</button>
+      <button type="submit" onClick={handleSubmit}  >Update</button>
     </form>
     
   );

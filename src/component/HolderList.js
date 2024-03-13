@@ -5,12 +5,12 @@ const HolderList = ({ holders, viewHolder, updateHolder, deleteHolder }) => {
     <div className='CreateFrom'>
       <h2>Place Holder List</h2>
       <ul>
-        {holders.map((holders) => (
-          <li key={holders.id}>
-            {holders.name}
-            <button onClick={() => viewHolder(holders)}>View</button>
-            <button onClick={() => updateHolder(holders)}>Update</button>
-            <button onClick={() => deleteHolder(holders.id)}>Delete</button>
+        {holders.map((holder) => (
+          <li key={holder.id}>
+            {holder.name}
+            <button onClick={() => viewHolder(holder)}>View</button>
+            <button onClick={() => updateHolder(holder)}>Update</button>
+            <button onClick={() => deleteHolder(holder.id)}>Delete</button>
           </li>
         ))}
       </ul>

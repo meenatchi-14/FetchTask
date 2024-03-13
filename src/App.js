@@ -35,8 +35,8 @@ function App() {
         },
         body: JSON.stringify(holderData),
       });
-      const data = await response.json();
-      setHolders([...holders, data]);
+      const data1 = await response.json();
+      setHolders([...holders, data1]);
     } catch (error) {
       console.error('Error Creating Holder:', error);
     }
@@ -82,20 +82,20 @@ function App() {
       <h1>CRUD Application</h1> 
       <div className='main'>
 <div className='left'>
-<CreateForm createHolder={CreateHolder} initial={{ id: '', name: '', username:'',email:'',address:{street:'',suite:'',city:'',zipcode:'',geo:{lat:'',lng:''}},phone:'',website:'',company: {Name:'',catchPhrase:'',bs:''}}} />
+<CreateForm createHolder={CreateHolder} initial={{ id: '', name: '', username:'',email:'',address:{street:'',suite:'',city:'',zipcode:'',geo:{lat:'',lng:''}},phone:'',website:'',company:{Name:'',catchPhrase:'',bs:''}}} />
 </div>
   
   <div className='center'>
   <HolderList holders={holders} viewHolder={setSelectedHolder} updateHolder={setSelectedHolder} deleteHolder={deleteHolder} />
   </div>
-  <div className='right'>
+  <div className='middle'>
   {selectedHolder ? (
         <div >
           <HolderDetail holder={selectedHolder} />
           </div>
-          ) : null}
+          ) :null}
 </div>
-<div className='right'>
+<div className='righr'>
       {selectedHolder ? (
         <div>
             <HolderUpdate holder={selectedHolder} updateHolder={updateHolder} />
