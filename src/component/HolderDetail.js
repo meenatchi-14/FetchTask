@@ -1,8 +1,9 @@
 import React from 'react';
 
 const HolderDetail = ({ holder }) => {
+ 
   return (
-    <div className='detail'>
+    <form className='detail'>
       <h2>Place Holder Details</h2>
       <p>Name: {holder.name}</p>
       <p>UserName:{holder.username}</p>
@@ -21,7 +22,7 @@ const HolderDetail = ({ holder }) => {
       <p>CompanyName: {holder.company.name}</p>
       <p>CatchPhrase: {holder.company.catchPhrase}</p>
       <p>BS: {holder.company.bs}</p>
-    </div>
+    </form>
   );
 };
 

@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import CreateForm from './component/CreateForm';
 import HolderList from './component/HolderList';
 import HolderDetail from './component/HolderDetail';
-import HolderUpdate from './component/HolderUpdate';
+import UpdateForm from './component/UpdateFrom';
 
 function App() {
   const [holders, setHolders] = useState([]);
@@ -35,8 +35,8 @@ function App() {
         },
         body: JSON.stringify(holderData),
       });
-      const data1 = await response.json();
-      setHolders([...holders, data1]);
+      const newHolder = await response.json();
+      setHolders([...holders, newHolder]);
     } catch (error) {
       console.error('Error Creating Holder:', error);
     }
@@ -58,6 +58,7 @@ function App() {
       );
       setHolders(updatedHolders);
       setSelectedHolder(null);
+      
     } catch (error) {
       console.error('Error updating holder:', error);
     }
@@ -82,11 +83,11 @@ function App() {
       <h1>CRUD Application</h1> 
       <div className='main'>
 <div className='left'>
-<CreateForm createHolder={CreateHolder} initial={{ id: '', name: '', username:'',email:'',address:{street:'',suite:'',city:'',zipcode:'',geo:{lat:'',lng:''}},phone:'',website:'',company:{Name:'',catchPhrase:'',bs:''}}} />
+<CreateForm createHolder={CreateHolder} initial={{ id:'', name: '', username:'',email:'',address:{street:'',suite:'',city:'',zipcode:'',geo:{lat:'',lng:''}},phone:'',website:'',company:{Name:'',catchPhrase:'',bs:''}}} />
 </div>
-  
   <div className='center'>
-  <HolderList holders={holders} viewHolder={setSelectedHolder} updateHolder={setSelectedHolder} deleteHolder={deleteHolder} />
+  <HolderList holders={holders} SelectHolder={setSelectedHolder} deleteHolder={deleteHolder} />
+  
   </div>
   <div className='middle'>
   {selectedHolder ? (
@@ -95,10 +96,10 @@ function App() {
           </div>
           ) :null}
 </div>
-<div className='righr'>
+<div className='right'>
       {selectedHolder ? (
         <div>
-            <HolderUpdate holder={selectedHolder} updateHolder={updateHolder} />
+            <UpdateForm holder={selectedHolder} updateHolder={updateHolder} />
           </div>
           ) : null}    
         

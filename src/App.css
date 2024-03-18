@@ -1,21 +1,19 @@
 .app{
   text-align: center;
 }
-.CreateFrom{
+.Form{
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   align-items: center;
-  text-align: center;
+  /* text-align: center; */
  padding: 0.2rem;
 }
 button{
-  margin: 0.2rem;
-  align-items: start;
+  margin: 0.4rem;
+  /* align-items: start; */
 }
-label{
-  margin: 0.2rem;
-}
+
 .main{
   display: flex;
   flex-direction: row;
@@ -27,4 +25,12 @@ h1{
 h2{
   color: #191953;
 }
+label {
+  display: inline-block;
+  margin: 0.2rem;
+  width: 150px;
+  text-align: right;
+
+}
+
 
