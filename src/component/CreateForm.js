@@ -1,7 +1,9 @@
 import React, {  useState ,useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 
 const CreateForm = ({createHolder,initial}) => {
+  const navigate=useNavigate()
   const [formData, setFormData] = useState(initial);
   const inputRef = useRef(null);
   const handleInputChange = (event) => {
@@ -48,15 +50,16 @@ const handleCompany = (event) => {
 }
 const handleSubmit = (event) => {
   event.preventDefault();
-  if (formData.id) {
+  if (formData) {
     createHolder(formData);
     console.log(formData);
+    navigate("/")
     alert(`${inputRef.current.value}`)
   }
   else{
     console.log("no create")
   }
-  setFormData({ id:'++1',name: '',username:'',email:'',address:{street:'',suite:'',city:'',zipcode:'',geo:{lat:'',lng:''}},phone:'',website:'',company: {name:'',catchPhrase:'',bs:''}});
+  setFormData({ id:'++1',name: '',username:'',email:'',address:{street:'',suite:'',city:'',zipcode:'',geo:{lat:'',lng:''}},phone:'',website:'',company:{name:'',catchPhrase:'',bs:''}});
 };
   return (
     <form className='Form'>
