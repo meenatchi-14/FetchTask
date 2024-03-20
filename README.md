@@ -1,6 +1,8 @@
 ### CRUD Application
-#### Terminal Run Command
-#### (npm start)
+ - Create => CreateForm (Add Holder details )
+ - Read   => HolderDetail (Get Holders details)
+ - Update => UpdateForm (Edit Holder details )
+ - delete => deleteHolder (delete Holder details in id)
 
 Currently, two official plugins are available:
 
